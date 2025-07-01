@@ -4,8 +4,10 @@
 - API para um gerenciador de Podcasts em vídeo
 
 ### Stacks
-- Node
-- Typescript
+- [Node](https://nodejs.org/docs/latest/api/)
+- [Typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+- [Gitflow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
 
 ### Features
 - Listar os podcasts em sessões de categorias
