@@ -9,7 +9,11 @@
     "dist": "tsup src",
     "start": "npm run dist && node/server.js"
   },
-  "keywords": ["api", "podcast", "node"],
+  "keywords": [
+    "api",
+    "podcast",
+    "node"
+  ],
   "author": "Gustavo Souza",
   "license": "ISC",
   "description": "Gerenciador de Podcasts - API NodeJS Com Typescript e HTTP Module",
@@ -20,6 +24,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "dotenv": "^17.0.0"
+    "dotenv": "^17.0.0",
+    "http-status-codes": "^2.3.0"
   }
 }
