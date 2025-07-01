@@ -4,7 +4,7 @@
   import { HttpMethod } from "./utils/http-method";  
 
   export const app = async (request: http.IncomingMessage, response: http.ServerResponse) => {
-  const [baseUrl, _queryString] = request.url?.split("?") ?? ["",""]
+  const baseUrl = request.url?.split("?")[0] 
 
   if(request.method === HttpMethod.GET && baseUrl=== Routes.PODCASTS){
     await getListEpisodes(request, response)
