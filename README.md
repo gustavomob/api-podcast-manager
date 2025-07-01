@@ -8,6 +8,8 @@
 - [Typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 - [Gitflow](https://medium.com/trainingcenter/utilizando-o-fluxo-git-flow-e63d5e0d5e04)
 - [Dotenv](https://www.npmjs.com/package/dotenv)
+- [Http Status Code](https://www.npmjs.com/package/http-status-codes)
+- [Insomnia](https://insomnia.rest/)
 
 ### Features
 - Listar os podcasts em sessões de categorias
