@@ -16,6 +16,10 @@
   - [saúde, fitness, humor, mentalidade]
 - Filtrar episódios por nome de podcasts
 
+### Routes
+- api/episodes/
+- api/episodes?p=
+
 ### Como utilizar
 - Clonar o repositório
 - Digitar o comando dentro do projeto para instalar as dependências:

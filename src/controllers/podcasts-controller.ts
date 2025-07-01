@@ -1,17 +1,40 @@
-import {IncomingMessage, ServerResponse} from 'node:http'
-import {servicesListEpisodes} from '../services/list-episodes-services'
+import { IncomingMessage, ServerResponse } from 'node:http';
+import { servicesListEpisodes } from '../services/list-episodes-services';
 import { servicesFilterEpisodes } from '../services/filter-episodes-services';
-import statuscode from 'http-status-codes'
 import { ContentType } from '../utils/content-type';
+import { FilterPodcastModel } from '../models/filter-podcast-model';
+import statuscode from 'http-status-codes';
 
-export const getListEpisodes = async (request: IncomingMessage, response: ServerResponse) => {
-  const content = await servicesListEpisodes(); // <- aqui!
-  response.writeHead(statuscode.OK, { "Content-Type": ContentType.JSON });
-  response.end(JSON.stringify(content));
-}
+const DEFAULT_CONTENT = {"Content-Type": ContentType.JSON}
 
-export const getFilterEpisodes = async (request: IncomingMessage, response: ServerResponse) => {
-  const content = await servicesFilterEpisodes(request.url); // <- aqui!
-  response.writeHead(statuscode.OK, { "Content-Type": ContentType.JSON });
-  response.end(JSON.stringify(content));
-}
+export const getListEpisodes = async (
+  _request: IncomingMessage,
+  response: ServerResponse
+) => {
+  try {
+    const content: FilterPodcastModel = await servicesListEpisodes();
+    response.writeHead(content.statusCode, DEFAULT_CONTENT);
+    response.write(JSON.stringify(content.body));
+    response.end();
+  } catch (error) {
+    response.writeHead(statuscode.INTERNAL_SERVER_ERROR, DEFAULT_CONTENT);
+    response.write(JSON.stringify({ error: "Erro ao listar episódios" }));
+    response.end();
+  }
+};
+
+export const getFilterEpisodes = async (
+  request: IncomingMessage,
+  response: ServerResponse
+) => {
+  try {
+    const content: FilterPodcastModel = await servicesFilterEpisodes(request.url ?? '/');
+    response.writeHead(content.statusCode, DEFAULT_CONTENT);
+    response.write(JSON.stringify(content.body));
+    response.end();
+  } catch (error) {
+    response.writeHead(statuscode.INTERNAL_SERVER_ERROR, DEFAULT_CONTENT);
+    response.write(JSON.stringify({ error: "Erro ao filtrar episódios" }));
+    response.end();
+  }
+};
